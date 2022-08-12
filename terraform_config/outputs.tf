@@ -1,7 +1,7 @@
-output "instance_ip" {
-  value = module.ec2-instance.public_ip
+output "aws_instance_ip" {
+  value = module.instances.aws.*.public_ip
 }
 
-output "instance_tags" {
-  value = module.ec2-instance.ec2_tags
+output "azure_instance_ip" {
+  value = module.instances.azure.*.public_ip
 }

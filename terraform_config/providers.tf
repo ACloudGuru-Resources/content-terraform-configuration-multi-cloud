@@ -1,22 +1,30 @@
 terraform {
 
+    cloud {
+    organization = "multi-cloud-guru"
+
+    workspaces {
+      name = "test"
+    }
+  }
+  
   required_version = ">= 0.14.9"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.27"
+      version = "~> 4.25"
     }
 
     azurerm = {
        source = "hashicorp/azurerm"
-       version = "~>2.0"
+       version = "~>3.17"
      }
   }
 }
 
 provider "aws" {
-  region  = "us-west-2"
+  region  = "us-east-1"
 }
  
 provider "azurerm" {

@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rg" {
-  name      = "<RESOURCE_GROUP_NAME>"
-  location  = var.resource_group_location
+  #name      = var.resource_group_name
+  #location  = var.resource_group_location
 }
 
 # Create virtual network
@@ -91,8 +91,4 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_username                  = "guru"
   disable_password_authentication = true
 
-  admin_ssh_key {
-    username   = "guru"
-    public_key = tls_private_key.example_ssh.public_key_openssh
-  }
 }

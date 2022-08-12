@@ -1,15 +1,15 @@
-module "instance" {
-  source = "./instance"
+## AWS
+module "aws" {
+  source  = "./modules/aws"
 
-  platforms = ["aws", "azure"]
+  count   = var.enable_aws ? 1 : 0
+
 }
 
-resource "aws_instance" "this" {
-  for_each = contains(var.platforms, "aws") ? toset([for instance in range(var.instances) : tostring(instance)]) : []
-  ...
-}
+## Azure
+module "azure" {
+  source  = "./modules/azure"
 
-resource "azurerm_linux_virtual_machine" "this" {
-  for_each = contains(var.platforms, "azure") ? toset([for instance in range(var.instances) : tostring(instance)]) : []
-  ...
+  count = var.enable_azure ? 1 : 0
+
 }
