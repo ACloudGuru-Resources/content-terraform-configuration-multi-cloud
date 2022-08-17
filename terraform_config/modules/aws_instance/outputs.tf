@@ -1,3 +1,3 @@
-output "instance_ip" {
-    value = concat(aws_instance.app_server.*.public_ip[""])[0]
+output "instance_name" {
+    value = aws_instance.inst.*.tags.Name
 }
